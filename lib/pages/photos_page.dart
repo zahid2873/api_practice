@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:api_practice/pages/user_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../models/photos_model.dart';
 import 'package:http/http.dart' as http;
@@ -41,6 +43,11 @@ class _PhotosPageState extends State<PhotosPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Photos Api"),
+        actions: [
+          TextButton(onPressed: (){
+            Get.to(()=>UserPage(), transition: Transition.zoom, duration: Duration(seconds: 2));
+          }, child: Text("Next Api",style: TextStyle(color: Colors.redAccent)),)
+        ],
       ),
       body: Column(
         children: [
@@ -57,7 +64,7 @@ class _PhotosPageState extends State<PhotosPage> {
                         return ListTile(
                           title: Text(photoList[index].title.toString()),
                           leading: CircleAvatar(
-                            backgroundImage: NetworkImage(photoList[index].url.toString()),
+                            backgroundImage: NetworkImage(photoList[index].url.toString(),),
                           ),
                           trailing: Text(snapshot.data![index].id.toString()),
                           subtitle: Column(
