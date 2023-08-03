@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:api_practice/pages/photos_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../models/posts_model.dart';
 import 'package:http/http.dart' as http;
@@ -33,6 +35,11 @@ class _PostsHomePageState extends State<PostsHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Posts"),
+        actions: [
+          TextButton(onPressed: (){
+            Get.to(()=>PhotosPage(), transition: Transition.downToUp, duration: Duration(seconds: 2));
+          }, child: Text("Next Api", style: TextStyle(color: Colors.orange),))
+        ],
       ),
       body: Column(
         children: [
